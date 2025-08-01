@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Encryptor - Advanced Encryption Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="animated-background">
+        <div class="particles"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <div class="container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Secure Encryptor</h1>
+            </div>
+            <div class="security-indicator">
+                <div class="security-dot"></div>
+                <span>256-bit AES Encryption</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="encryption-panel">
+                <div class="panel-header">
+                    <h2><i class="fas fa-lock"></i> Encryption</h2>
+                    <div class="mode-switch">
+                        <button class="mode-btn active" data-mode="encrypt">
+                            <i class="fas fa-lock"></i> Encrypt
+                        </button>
+                        <button class="mode-btn" data-mode="decrypt">
+                            <i class="fas fa-unlock"></i> Decrypt
+                        </button>
+                    </div>
+                </div>
+
+                <div class="input-section">
+                    <div class="input-group">
+                        <label for="input-text">
+                            <i class="fas fa-file-text"></i> Input Text
+                        </label>
+                        <textarea id="input-text" placeholder="Enter text to encrypt/decrypt..."></textarea>
+                        <div class="file-upload">
+                            <input type="file" id="file-input" accept=".txt,.doc,.docx,.pdf">
+                            <label for="file-input" class="file-btn">
+                                <i class="fas fa-upload"></i> Upload File
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="key-section">
+                        <div class="key-input-group">
+                            <label for="encryption-key">
+                                <i class="fas fa-key"></i> Encryption Key
+                            </label>
+                            <div class="key-container">
+                                <input type="password" id="encryption-key" placeholder="Enter your secret key">
+                                <button class="generate-key-btn" id="generate-key">
+                                    <i class="fas fa-random"></i>
+                                </button>
+                                <button class="toggle-password" id="toggle-key">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="key-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strength-fill"></div>
+                            </div>
+                            <span class="strength-text" id="strength-text">Weak</span>
+                        </div>
+                    </div>
+
+                    <div class="options-section">
+                        <div class="option-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="include-iv" checked>
+                                <span class="checkmark"></span>
+                                Include Initialization Vector (IV)
+                            </label>
+                        </div>
+                        <div class="option-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="base64-output" checked>
+                                <span class="checkmark"></span>
+                                Base64 Output
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn primary" id="process-btn">
+                            <i class="fas fa-cog"></i>
+                            <span class="btn-text">Encrypt</span>
+                        </button>
+                        <button class="action-btn secondary" id="clear-btn">
+                            <i class="fas fa-trash"></i>
+                            Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <div class="output-header">
+                        <h3><i class="fas fa-file-code"></i> Output</h3>
+                        <div class="output-actions">
+                            <button class="output-btn" id="copy-output">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <button class="output-btn" id="download-output">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                    <div class="output-container">
+                        <textarea id="output-text" readonly placeholder="Encrypted/Decrypted text will appear here..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <div class="info-card">
+                    <h3><i class="fas fa-info-circle"></i> Security Features</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> AES-256 encryption</li>
+                        <li><i class="fas fa-check"></i> PBKDF2 key derivation</li>
+                        <li><i class="fas fa-check"></i> Random IV generation</li>
+                        <li><i class="fas fa-check"></i> Salt-based protection</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-history"></i> Recent Operations</h3>
+                    <div class="history-list" id="history-list">
+                        <div class="history-item">
+                            <span class="history-type encrypt">Encrypted</span>
+                            <span class="history-time">Just now</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-check"></i>
+        <span class="notification-text">Operation completed successfully!</span>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
